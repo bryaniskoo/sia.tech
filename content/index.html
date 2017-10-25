@@ -2,6 +2,19 @@
 type = "index"
 i18nwarnings = [ "zh-hant", "ru" ]
 +++
+
+
+<?php
+//Force secure connection. File will need to change to .php or rewritten with java redirect. ~Bryan
+if(empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
+    $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: ' . $redirect);
+	print'<a href="https://sia.tech">Click here to redirect to secure connection.</a>';
+    exit();
+}
+?>
+
 <!-- Hero header -->
 <section class="hero is-primary is-medium connected-world">
 	<div class="hero-body">
